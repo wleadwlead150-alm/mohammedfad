@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101411">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="إدارة محتوى وطلاب FADIL TRADING">
+  <title>بوابة الإدارة — FADIL TRADING</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="admin">
+  <header class="wrap bar">
+    <a href="/home.html" class="brand"><span class="crown">♛</span><span><b>FADIL TRADING</b><small>بوابة الإدارة</small></span></a>
+    <div class="actions"><a class="btn" href="/home.html">عرض المنصة</a><button id="logout" class="btn hidden" data-action="logout">تسجيل الخروج</button></div>
+  </header>
+  <div id="login-screen" class="login-shell">
+    <form class="login-card" data-form="login"><div class="tag">ADMIN ACCESS / SECURE</div><h1>دخول الإدارة</h1><p>بوابة منفصلة لإدارة محتوى الأكاديمية وطلبات الطلاب.</p>
+      <label>اسم المستخدم أو البريد الإلكتروني<input name="email" type="text" autocomplete="username" required></label>
+      <label>كلمة المرور<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="btn primary">دخول</button><div class="form-msg" role="status"></div><div class="hint">يتطلب حساباً بدور مدير. لا يتم تجاوز صلاحيات الخادم.</div>
+    </form>
+  </div>
+
+  <div id="admin-app" class="wrap admin-layout hidden">
+    <aside class="sidebar"><div class="side-title"><small>CONTROL ROOM / 01</small><b>إدارة الأكاديمية</b></div><nav class="side-nav"><a class="active" href="#overview">نظرة عامة</a><a href="#subscriptions">طلبات الاشتراك</a><a href="#inbox">صندوق الدعم</a><a href="#courses">الدورات والدروس</a><a href="#content">المحتوى والملفات</a><a href="#students">تقدم الطلاب</a></nav></aside>
+    <main class="main">
+      <div class="main-head" id="overview"><div><div class="tag">ACADEMY OPERATIONS</div><h1>مركز الإدارة</h1><p id="admin-welcome">البيانات تُحمّل مباشرة من الخادم.</p></div><button class="btn" data-action="refresh">تحديث البيانات</button></div>
+      <div id="overview-stats" class="stats"><div class="stat"><small>الطلاب</small><b>—</b></div><div class="stat"><small>اشتراكات فعالة</small><b>—</b></div><div class="stat"><small>بانتظار المراجعة</small><b>—</b></div><div class="stat"><small>رسائل غير مقروءة</small><b>—</b></div></div>
+
+      <section class="section" id="subscriptions"><div class="section-head"><h2>مراجعة طلبات الاشتراك</h2><small>اعتماد القرار لا يتم إلا بعد مراجعة إثبات الدفع.</small></div><div class="section-body table-wrap" id="subscription-table"><div class="loading-line"></div></div></section>
+      <section class="section" id="inbox"><div class="section-head"><h2>صندوق دعم الطلاب</h2><small>المحادثات والردود المرتبطة بحساب الطالب.</small></div><div class="section-body" id="message-inbox"><div class="loading-line"></div></div></section>
+
+      <section class="section" id="courses"><div class="section-head"><h2>الدورات والدروس والموارد</h2><small>ترفع الملفات إلى الخادم وتبقى محمية حسب صلاحية الطالب.</small></div><div class="section-body"><div class="grid-forms">
+        <form class="form-card" data-form="course"><h3>إضافة دورة</h3><div class="field"><label>عنوان الدورة</label><input name="title" required maxlength="200"></div><div class="field"><label>الوصف</label><textarea name="description" maxlength="5000"></textarea></div><div class="field"><label>التصنيف</label><select name="category" required><option value="">اختر التصنيف</option><option>SMC / ICT</option><option>Harmonic</option><option>Fundamentals</option><option>Capital Management</option><option>Resources</option></select></div><div class="field"><label>صورة الغلاف</label><input name="thumbnail" type="file" accept="image/*"></div><div class="field"><label>مرفق الدورة (صورة أو PDF)</label><input name="attachment" type="file" accept="image/*,.pdf"></div><label class="check"><input type="checkbox" name="isPublished" value="true"> منشورة</label><label class="check"><input type="checkbox" name="isFree" value="true"> مجانية</label><button class="btn primary">حفظ الدورة</button><div class="form-msg"></div></form>
+        <form class="form-card" data-form="lesson"><h3>إضافة درس</h3><div class="field"><label>الدورة المرتبطة — مطلوب</label><select name="courseId" data-course-select required><option value="">اختر دورة</option></select></div><div class="field"><label>عنوان الدرس</label><input name="title" required maxlength="200"></div><div class="field"><label>الوصف</label><textarea name="description" maxlength="5000"></textarea></div><div class="field"><label>التصنيف</label><input name="category" required maxlength="100" placeholder="مثال: بنية السوق"></div><div class="field"><label>رابط الفيديو (اختياري)</label><input name="videoUrl" type="url"></div><div class="field"><label>مدة الفيديو بالثواني</label><input name="durationSeconds" type="number" min="0" value="0"></div><div class="field"><label>ملف الفيديو (اختياري)</label><input name="video" type="file" accept="video/*"></div><div class="field"><label>مرفق الدرس (صورة أو PDF)</label><input name="attachment" type="file" accept="image/*,.pdf"></div><label class="check"><input type="checkbox" name="isPublished" value="true"> منشور</label><button class="btn primary">حفظ الدرس</button><div class="form-msg"></div></form>
+        <form class="form-card" data-form="resource"><h3>رفع مورد للدورة</h3><div class="field"><label>الدورة — مطلوب</label><select name="courseId" data-course-select required><option value="">اختر دورة</option></select></div><div class="field"><label>الدرس (اختياري)</label><select name="lessonId" data-lesson-select><option value="">مورد عام للدورة</option></select></div><div class="field"><label>عنوان الملف</label><input name="title" required maxlength="200"></div><div class="field"><label>الملف</label><input name="file" type="file" required></div><button class="btn primary">رفع المورد</button><div class="form-msg"></div></form>
+        <div class="form-card"><h3>الدورات المنشورة والمسودات</h3><div id="course-list"><div class="loading-line"></div></div></div>
+      </div></div></section>
+
+      <section class="section" id="content"><div class="section-head"><h2>الأخبار والتحليلات والملفات التعليمية</h2><small>يظهر المحتوى المنشور للطلاب.</small></div><div class="section-body"><div class="grid-forms">
+        <form class="form-card" data-form="news"><h3>نشر خبر</h3><div class="field"><label>العنوان</label><input name="title" required maxlength="200"></div><div class="field"><label>الملخص</label><textarea name="summary" required maxlength="5000"></textarea></div><div class="field"><label>التصنيف</label><input name="category" required maxlength="100"></div><div class="field"><label>رابط المصدر</label><input name="sourceUrl" type="url"></div><label class="check"><input type="checkbox" name="isPublished" value="true"> نشر مباشرة</label><button class="btn primary">نشر الخبر</button><div class="form-msg"></div></form>
+        <form class="form-card" data-form="analysis"><h3>إضافة تحليل</h3><div class="field"><label>العنوان</label><input name="title" required maxlength="200"></div><div class="field"><label>نص التحليل</label><textarea name="body" required maxlength="15000"></textarea></div><div class="field"><label>مرفق التحليل (صورة أو PDF)</label><input name="attachment" type="file" accept="image/*,.pdf"></div><label class="check"><input type="checkbox" name="isPublished" value="true"> نشر مباشرة</label><button class="btn primary">حفظ التحليل</button><div class="form-msg"></div></form>
+        <form class="form-card" data-form="quizzes"><h3>رفع ملف اختبار</h3><div class="field"><label>عنوان الملف</label><input name="title" required maxlength="200"></div><div class="field"><label>الملف</label><input name="file" type="file" required></div><button class="btn primary">رفع الاختبار</button><div class="form-msg"></div></form>
+        <form class="form-card" data-form="results"><h3>رفع ملف نتائج الطلاب</h3><div class="field"><label>عنوان الملف</label><input name="title" required maxlength="200"></div><div class="field"><label>الملف</label><input name="file" type="file" required></div><button class="btn primary">رفع النتائج</button><div class="form-msg"></div></form>
+      </div></div></section>
+
+      <section class="section" id="students"><div class="section-head"><h2>تقدم الطلاب</h2><small>إحصاءات الإنجاز لكل طالب.</small></div><div id="students-table" class="section-body table-wrap"><div class="loading-line"></div></div></section>
+      <div id="global-msg" class="form-msg" role="status"></div>
+    </main>
+  </div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
